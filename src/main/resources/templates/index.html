@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Busca CNPJ</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input { padding: 10px; font-size: 16px; width: 300px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>Consulta de Empresa</h1>
+    
+    <form action="/buscar" method="GET">
+        <div th:if="${empresa != null}" style="margin-top: 30px; border: 1px solid #ccc; padding: 20px;">
+    <h2>Resultado da Busca:</h2>
+    <p><strong>CNPJ:</strong> <span th:text="${empresa.cnpj}"></span></p>
+    <p><strong>Razão Social:</strong> <span th:text="${empresa.razaoSocial}"></span></p>
+    <p><strong>Nome Fantasia:</strong> <span th:text="${empresa.nomeFantasia}"></span></p>
+</div>
+
+<div th:if="${erro != null}" style="margin-top: 30px; color: red;">
+    <p th:text="${erro}"></p>
+</div>
+        <input type="text" name="cnpj" placeholder="Digite o CNPJ (só números)" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+</body>
+</html>
